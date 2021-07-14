@@ -16,7 +16,6 @@
 		},
 		data() {
 			return {
-				id: '123',
 				ctx: null,
 				canvas: null,
 				ChirographyCache: [],
@@ -124,36 +123,21 @@
 
 			_handleTouchStart(e) {
 				const points = []
-				const {
-					x,
-					y
-				} = e.touches[0]
+				const { x, y } = e.touches[0]
 
-				points.push({
-					x,
-					y
-				})
+				points.push({ x, y })
 
 				this.currentChirographys = points
 
 			},
 			_handleTouchMove(e) {
-				const {
-					x,
-					y
-				} = e.touches[0]
+				const { x, y } = e.touches[0]
 
-				const {
-					x: lastX,
-					y: lastY
-				} = this.currentChirographys[this.currentChirographys.length - 1]
+				const { x: lastX, y: lastY } = this.currentChirographys[this.currentChirographys.length - 1]
 
 				this._drawLine(lastX, lastY, x, y)
 
-				this.currentChirographys.push({
-					x,
-					y
-				})
+				this.currentChirographys.push({ x, y })
 			},
 			_handleTouchEnd(e) {
 				this.ChirographyCache.push([...this.currentChirographys])
