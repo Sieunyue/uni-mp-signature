@@ -48,7 +48,12 @@
 				this._unDrawChirography()
 			},
 			getImage(){
+				if(!this.canvas){
+					return
+				}
+				const bs64 = this.canvas.toDataURL()
 				
+				return bs64
 			},
 			_initCanvas() {
 				uni.createSelectorQuery()
